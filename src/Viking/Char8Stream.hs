@@ -11,7 +11,7 @@ import qualified Data.ByteString as Strict
 import           Data.ByteString.Streaming.Char8 hiding (ByteString)
 import qualified Data.ByteString.Streaming.Internal as Streaming
 
-import           P
+import           Viking.Prelude
 
 import           Viking (ByteStream)
 

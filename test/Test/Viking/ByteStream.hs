@@ -1,11 +1,13 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE LambdaCase #-}
 module Test.Viking.ByteStream where
 
 import           Control.Monad.Catch (throwM)
 import           Control.Monad.IO.Class (liftIO)
 import           Control.Monad.Trans.Resource (runResourceT)
+import           Control.Monad.Trans.Either (runEitherT)
 
 import qualified Data.ByteString as Strict
 import qualified Data.ByteString.Builder as Builder
@@ -14,17 +16,16 @@ import           Hedgehog
 import qualified Hedgehog.Gen as Gen
 import qualified Hedgehog.Range as Range
 
-import           P
+import           Viking.Prelude
 
 import           System.FilePath ((</>))
-import           System.IO (IO, hClose)
+import           System.IO (hClose)
 import           System.IO.Error (IOError, userError)
 import qualified System.IO.Temp as Temp
 
 import qualified Viking.ByteStream as ByteStream
 import qualified Viking.Stream as Stream
 
-import           X.Control.Monad.Trans.Either (runEitherT)
 
 
 prop_get_contents_exception :: Property
@@ -76,6 +77,11 @@ prop_builders =
         fmap Builder.byteString bss0
 
     Strict.concat bss0 === bs
+
+isLeft :: Either a b -> Bool
+isLeft = \case
+  Left _ -> True
+  Right _ -> False
 
 tests :: IO Bool
 tests =

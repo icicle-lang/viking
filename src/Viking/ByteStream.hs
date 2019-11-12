@@ -31,6 +31,9 @@ import           Control.Monad.Catch (MonadCatch, try)
 import           Control.Monad.IO.Class (MonadIO)
 import           Control.Monad.Morph (hoist)
 import           Control.Monad.Trans.Class (lift)
+import           Control.Monad.Trans.Either (EitherT, pattern EitherT)
+import qualified Control.Monad.Trans.Either as EitherT
+
 import           Control.Monad.Trans.Resource (MonadResource, allocate, release)
 
 import           Data.ByteString.Builder (Builder)
@@ -40,17 +43,15 @@ import           Data.ByteString.Streaming hiding (ByteString, readFile, writeFi
 import qualified Data.ByteString.Streaming.Internal as Streaming
 import           Data.ByteString.Streaming.Internal (consChunk)
 
-import           P
+import           Viking.Prelude
 
-import           System.IO (FilePath, Handle, IOMode(..))
+import           System.IO (Handle, IOMode(..))
 import qualified System.IO as IO
 import           System.IO.Error (IOError)
 
 import           Viking
 import qualified Viking.Stream as Stream
 
-import           X.Control.Monad.Trans.Either (EitherT, pattern EitherT)
-import qualified X.Control.Monad.Trans.Either as EitherT
 
 
 embed :: Monad n => (forall a. m a -> ByteStream n a) -> ByteStream m b -> ByteStream n b
@@ -62,7 +63,7 @@ embed phi =
       Streaming.Chunk bs rest ->
         Streaming.Chunk bs (loop rest)
       Streaming.Go m ->
-        loop =<< phi m
+        phi m >>= loop
   in
     loop
 {-# INLINABLE embed #-}

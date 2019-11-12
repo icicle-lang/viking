@@ -14,15 +14,16 @@ module Viking.Stream.Binary (
 
 import           Control.Monad.Morph (hoist)
 import           Control.Monad.Trans.Class (lift)
+import           Control.Monad.Trans.Either (EitherT, left)
 
 import           Data.Binary.Get (Get)
 import qualified Data.Binary.Get as Get
 import qualified Data.ByteString as Strict
 import qualified Data.Text as Text
+import           Data.Text (Text)
 
-import           P
+import           Viking.Prelude
 
-import           X.Control.Monad.Trans.Either (EitherT, left)
 
 import           Viking
 import qualified Viking.ByteStream as ByteStream

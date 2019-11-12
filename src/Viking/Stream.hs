@@ -6,7 +6,7 @@ module Viking.Stream (
   , whenEmpty
   ) where
 
-import           P
+import           Viking.Prelude
 
 import           Streaming
 import           Streaming.Prelude

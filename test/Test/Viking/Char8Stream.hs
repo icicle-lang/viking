@@ -11,9 +11,7 @@ import           Hedgehog
 import qualified Hedgehog.Gen as Gen
 import qualified Hedgehog.Range as Range
 
-import           P
-
-import           System.IO (IO)
+import           Viking.Prelude
 
 import           Viking
 import qualified Viking.ByteStream as ByteStream

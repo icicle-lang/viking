@@ -4,29 +4,27 @@
 {-# LANGUAGE TemplateHaskell #-}
 module Test.Viking.Stream.Binary where
 
+import           Control.Monad.Trans.Either (EitherT, runEitherT)
+
 import           Data.Binary.Get (Get)
 import qualified Data.Binary.Get as Get
 import qualified Data.Binary.Put as Put
 import qualified Data.ByteString as Strict
 import qualified Data.ByteString.Lazy as Lazy
+import           Data.Foldable (traverse_)
 import           Data.Functor.Identity (runIdentity)
 
 import           Hedgehog
 import qualified Hedgehog.Gen as Gen
 import qualified Hedgehog.Range as Range
 
-import           P
-
-import           System.IO (IO)
+import           Viking.Prelude
 
 import           Viking
 import qualified Viking.ByteStream as ByteStream
 import qualified Viking.Stream as Stream
 import           Viking.Stream.Binary (BinaryError)
 import qualified Viking.Stream.Binary as Stream
-
-import           X.Control.Monad.Trans.Either (EitherT, runEitherT)
-
 
 prop_get :: Property
 prop_get =

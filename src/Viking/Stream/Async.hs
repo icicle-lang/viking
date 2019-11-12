@@ -10,7 +10,7 @@ import qualified Control.Concurrent.Async.Lifted as Async
 import           Control.Monad.Base (liftBase)
 import           Control.Monad.Trans.Control (MonadBaseControl)
 
-import           P
+import           Viking.Prelude
 
 import           System.IO (IO)
 
