@@ -1,10 +1,15 @@
-viking
-======
+<div align="center">
 
-> The Vikings were daring masters of the sea. The shallow draught of their
-> swift wooden longships meant that they were able to reach far inland by
-> river and stream, striking and moving on before local forces could
-> muster.
+# Viking
+
+The Vikings were daring masters of the sea. The shallow draught of their
+swift wooden longships meant that they were able to reach far inland by
+river and stream, striking and moving on before local forces could
+muster.
+
+[![Build Status](https://api.travis-ci.com/icicle-lang/viking.svg?branch=master)](https://travis-ci.com/icicle-lang/viking)
+
+</div>
 
 <img src="https://github.com/ambiata/viking/raw/master/img/viking.jpg" width="480" align="right"/>
 
