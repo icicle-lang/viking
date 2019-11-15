@@ -31,7 +31,7 @@ library
                      , lifted-async                    >= 0.9        && < 0.11
                      , mmorph                          >= 1.0        && < 1.2
                      , monad-control                   == 1.0.*
-                     , resourcet                       == 1.1.*
+                     , resourcet                       >= 1.1
                      , streaming                       >= 0.1        && < 0.3
                      , streaming-bytestring            >= 0.1        && < 0.2
                      , text                            >= 1.0        && < 1.3
@@ -73,6 +73,7 @@ test-suite test
                      , exceptions
                      , filepath                        >= 1.3        && < 1.5
                      , hedgehog                        >= 1.0
+                     , mmorph
                      , resourcet
                      , temporary-resourcet             == 0.1.*
                      , transformers

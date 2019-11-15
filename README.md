@@ -15,7 +15,7 @@ muster.
 
 ## Overview
 
-Viking is an opinionated wrapper around 
+Viking is an opinionated wrapper around
 [michaelt](https://github.com/michaelt)'s
 [streaming](http://hackage.haskell.org/package/streaming) and
 [streaming-bytestring](http://hackage.haskell.org/package/streaming-bytestring)

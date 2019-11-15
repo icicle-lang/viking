@@ -5,6 +5,7 @@
 module Test.Viking.ByteStream where
 
 import           Control.Monad.Catch (throwM)
+import           Control.Monad.Morph (hoist)
 import           Control.Monad.IO.Class (liftIO)
 import           Control.Monad.Trans.Resource (runResourceT)
 import           Control.Monad.Trans.Either (runEitherT)
@@ -30,7 +31,7 @@ import qualified Viking.Stream as Stream
 
 prop_get_contents_exception :: Property
 prop_get_contents_exception =
-  withTests 1 . property . test . runResourceT $ do
+  withTests 1 . property . test . hoist runResourceT $ do
     (_, _, h) <- Temp.openBinaryTempFile Nothing "viking-"
     liftIO $ hClose h
 
@@ -42,7 +43,7 @@ prop_get_contents_exception =
 
 prop_read_file_exception :: Property
 prop_read_file_exception =
-  withTests 1 . property . test . runResourceT $ do
+  withTests 1 . property . test . hoist runResourceT $ do
     (_, dir) <- Temp.createTempDirectory Nothing "viking-"
 
     x <- runEitherT . ByteStream.effects $ ByteStream.readFile (dir </> "foo")
@@ -53,7 +54,7 @@ prop_read_file_exception =
 
 prop_write_file_exception :: Property
 prop_write_file_exception =
-  withTests 1 . property . test . runResourceT $ do
+  withTests 1 . property . test . hoist runResourceT $ do
     (_, dir) <- Temp.createTempDirectory Nothing "viking-"
 
     let
