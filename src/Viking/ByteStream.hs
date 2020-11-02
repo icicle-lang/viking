@@ -4,7 +4,7 @@
 {-# LANGUAGE PatternSynonyms #-}
 {-# LANGUAGE RankNTypes #-}
 module Viking.ByteStream (
-    module Data.ByteString.Streaming
+    module Streaming.ByteString
 
   , consChunk
 
@@ -38,18 +38,18 @@ import           Control.Monad.Trans.Resource (MonadResource, allocate, release)
 
 import           Data.ByteString.Builder (Builder)
 import qualified Data.ByteString.Builder as Builder
-import qualified Data.ByteString.Streaming as Streaming
-import           Data.ByteString.Streaming hiding (ByteString, readFile, writeFile, hGetContents, hGetContentsN, hPut)
-import qualified Data.ByteString.Streaming.Internal as Streaming
-import           Data.ByteString.Streaming.Internal (consChunk)
+import qualified Streaming.ByteString as Streaming
+import           Streaming.ByteString hiding (readFile, writeFile, hGetContents, hGetContentsN, hPut)
+import qualified Streaming.ByteString.Internal as Streaming
+import           Streaming.ByteString.Internal (consChunk)
 
+import           Viking
 import           Viking.Prelude
 
 import           System.IO (Handle, IOMode(..))
 import qualified System.IO as IO
 import           System.IO.Error (IOError)
 
-import           Viking
 import qualified Viking.Stream as Stream
 
 

@@ -22,10 +22,12 @@ import qualified Data.ByteString as Strict
 import qualified Data.Text as Text
 import           Data.Text (Text)
 
+import           Streaming.ByteString(ByteStream)
+
+import Viking
 import           Viking.Prelude
 
 
-import           Viking
 import qualified Viking.ByteStream as ByteStream
 import qualified Viking.Stream as Stream
 
@@ -54,7 +56,7 @@ runGet get input =
         pure (x, ByteStream.consChunk bs bss0)
 
       Get.Partial k -> do
-        e <- lift $ ByteStream.nextChunk bss0
+        e <- lift $ ByteStream.unconsChunk bss0
         case e of
           Left r ->
             loop (pure r) (k Nothing)
@@ -70,7 +72,7 @@ runGetSome :: Monad m => Get a -> ByteStream m r -> Stream (Of a) (EitherT Binar
 runGetSome get input =
   let
     nextGet bss0 = do
-      e <- lift $ ByteStream.nextChunk bss0
+      e <- lift $ ByteStream.unconsChunk bss0
       case e of
         Left r ->
           pure r
@@ -89,7 +91,7 @@ runGetSome get input =
           loop bss0 (Get.runGetIncremental get `Get.pushChunk` bs)
 
       Get.Partial k -> do
-        e <- lift $ ByteStream.nextChunk bss0
+        e <- lift $ ByteStream.unconsChunk bss0
         case e of
           Left r ->
             loop (pure r) (k Nothing)
@@ -103,7 +105,7 @@ runGetSome get input =
 --
 runGetMany :: Monad m => Get a -> ByteStream m r -> Stream (Of a) (EitherT BinaryError m) r
 runGetMany get input = do
-  e <- lift . lift $ ByteStream.nextChunk input
+  e <- lift . lift $ ByteStream.unconsChunk input
   case e of
     Left r ->
       pure r

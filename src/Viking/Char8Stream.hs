@@ -2,19 +2,16 @@
 {-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 module Viking.Char8Stream (
-    module Data.ByteString.Streaming.Char8
+    module Streaming.ByteString.Char8
 
   , rechunkLineEnd
   ) where
 
 import qualified Data.ByteString as Strict
-import           Data.ByteString.Streaming.Char8 hiding (ByteString)
-import qualified Data.ByteString.Streaming.Internal as Streaming
+import           Streaming.ByteString.Char8
+import qualified Streaming.ByteString.Internal as Streaming
 
 import           Viking.Prelude
-
-import           Viking (ByteStream)
-
 
 -- | Ensures that every chunk in the stream ends on a @'\n'@ line feed character.
 --

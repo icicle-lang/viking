@@ -6,12 +6,7 @@ module Viking (
   -- $general
     Stream
   , Of(..)
-
-  -- * Specialized
-  , ByteStream
   ) where
-
-import           Data.ByteString.Streaming (ByteString)
 
 import           Streaming (Stream, Of(..))
 
@@ -21,7 +16,7 @@ import           Streaming (Stream, Of(..))
 -- imports:
 --
 -- @
--- import           Viking (Of(..), Stream, ByteStream)
+-- import           Viking (Of(..), Stream)
 -- import qualified Viking.Stream as Stream
 -- import qualified Viking.ByteStream as ByteStream
 -- import qualified Viking.Char8Stream as Char8Stream
@@ -54,21 +49,3 @@ import           Streaming (Stream, Of(..))
 --   | Return r
 -- @
 --
-
--- | This is a type synonym for streaming
---   'Data.ByteString.Streaming.ByteString' to make it possible to use in
---   conjunction with strict 'Data.ByteString.ByteString' without having to
---   qualify both types.
---
---   This can be used with the "Viking.ByteStream" interface, or with the
---   "Viking.Char8Stream" interface.
---
--- @
--- data ByteStream m r =
---     Empty r
---   | Chunk !Strict.ByteString (ByteStream m r)
---   | Go (m (ByteStream m r))
--- @
---
-type ByteStream =
-  ByteString
