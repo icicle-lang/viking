@@ -6,7 +6,12 @@ module Viking (
   -- $general
     Stream
   , Of(..)
+
+  , ByteStream
   ) where
+
+
+import           Streaming.ByteString (ByteStream)
 
 import           Streaming (Stream, Of(..))
 

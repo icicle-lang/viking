@@ -22,11 +22,8 @@ import qualified Data.ByteString as Strict
 import qualified Data.Text as Text
 import           Data.Text (Text)
 
-import           Streaming.ByteString(ByteStream)
-
-import Viking
+import           Viking
 import           Viking.Prelude
-
 
 import qualified Viking.ByteStream as ByteStream
 import qualified Viking.Stream as Stream
