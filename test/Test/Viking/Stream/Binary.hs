@@ -11,7 +11,6 @@ import qualified Data.Binary.Get as Get
 import qualified Data.Binary.Put as Put
 import qualified Data.ByteString as Strict
 import qualified Data.ByteString.Lazy as Lazy
-import           Data.Foldable (traverse_)
 import           Data.Functor.Identity (runIdentity)
 
 import           Hedgehog

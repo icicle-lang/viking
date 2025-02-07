@@ -12,11 +12,9 @@ build-type:            Simple
 description:           Viking is an opinionated wrapper around the streaming and streaming-bytestring libraries.
 
 tested-with:
-  GHC==8.0.2,
-  GHC==8.2.2,
-  GHC==8.4.4,
-  GHC==8.6.5,
-  GHC==8.8.1
+  GHC==8.10.7,
+  GHC==8.8.4,
+  GHC==9.10.1
 
 source-repository head
   type:     git
@@ -26,16 +24,16 @@ library
   build-depends:
                        base                            >= 3          && < 5
                      , binary                          >= 0.7        && < 0.9
-                     , bytestring                      == 0.10.*
+                     , bytestring                      >= 0.10       && < 0.13
                      , exceptions                      >= 0.6        && < 0.11
                      , lifted-async                    >= 0.9        && < 0.11
-                     , mmorph                          >= 1.0        && < 1.2
+                     , mmorph                          >= 1.0        && < 1.3
                      , monad-control                   == 1.0.*
                      , resourcet                       >= 1.1
                      , streaming                       >= 0.1        && < 0.3
-                     , streaming-bytestring            >= 0.2        && < 0.3
-                     , text                            >= 1.0        && < 1.3
-                     , transformers                    >= 0.4        && < 0.6
+                     , streaming-bytestring            >= 0.2        && < 0.4
+                     , text                            >= 1.0        && < 2.2
+                     , transformers                    >= 0.4        && < 0.7
                      , transformers-either
 
   ghc-options:
@@ -71,7 +69,7 @@ test-suite test
                      , binary
                      , bytestring
                      , exceptions
-                     , filepath                        >= 1.3        && < 1.5
+                     , filepath                        >= 1.3        && < 1.6
                      , hedgehog                        >= 1.0
                      , mmorph
                      , resourcet
