@@ -25,10 +25,9 @@ jobs:
           - cabal: "3.12"
             ghc: "9.10.1"
             os: ubuntu-latest
-          # Needs streaming-bytestring released with ghc-prim bounds updated.
-          # - cabal: "3.12"
-          #   ghc: "9.12.1"
-          #   os: ubuntu-latest
+          - cabal: "3.12"
+            ghc: "9.12.1"
+            os: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
